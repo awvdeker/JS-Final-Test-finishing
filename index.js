@@ -5,10 +5,30 @@ var buttonGrocery = document.getElementById('buttonGrocery');
 var amount = document.getElementById('amount');
 var buttonSave = document.getElementById('buttonSave');
 
-afterReload()
+var crossEmpty = document.createElement('button');
+inputBox.parentNode.insertBefore(crossEmpty,inputBox.nextSibling);
+crossEmpty.style.display="none";
+crossEmpty.innerHTML="X";
+
+afterReload();
 
 buttonGrocery.addEventListener("click",clickHandler);
 buttonSave.addEventListener("click",saveToLocalStorage);
+inputBox.addEventListener("keyup",emptying);
+crossEmpty.addEventListener("click",emptyingInput);
+
+function emptyingInput(){
+  inputBox.value="";
+  crossEmpty.style.display="none";
+}
+
+function emptying(){
+  if (inputBox.value != ""){
+    crossEmpty.style.display="";
+  } else{
+    crossEmpty.style.display="none";
+  }
+}
 
 function clickHandler (){
   errorMessage.innerHTML="";
