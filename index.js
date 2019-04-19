@@ -40,8 +40,20 @@ function clickHandler (){
     if (inputBox.value == "" ){
       errorMessage.innerHTML="Type something!";
     } else {
+      var filter = inputBox.value.toUpperCase();
+      var searchArray = tableBody.getElementsByTagName("span");
+      if (searchArray[0]){
+        for (let i=0; i<searchArray.length; i++){
+          var txtValue = searchArray[i].innerHTML.toUpperCase();
+          if (txtValue == filter){
+            errorMessage.innerHTML="Grocery already in your list!";
+            return;
+          }
+        }
+      }
       addRow(inputBox.value);
       inputBox.value = "";
+
     }
   },500);
 }

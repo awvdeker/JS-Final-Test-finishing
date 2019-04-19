@@ -20,3 +20,5 @@ Groceries list
 - step 14-15: done
 
 - step 18: done
+
+- step 19: done
