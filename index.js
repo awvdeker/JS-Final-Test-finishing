@@ -3,7 +3,11 @@ var inputBox = document.getElementById('inputBox');
 var tableBody = document.getElementById('tableBody');
 var buttonGrocery = document.getElementById('buttonGrocery');
 var amount = document.getElementById('amount');
+var buttonSave = document.getElementById('buttonSave');
+
 buttonGrocery.addEventListener("click",clickHandler);
+buttonSave.addEventListener("click",saveToLocalStorage);
+
 function clickHandler (){
   errorMessage.innerHTML="";
   var spinner = document.createElement("i");
@@ -63,5 +67,15 @@ function changeToContent(){
   if (event.keyCode === 13) {
     this.nextSibling.innerHTML=this.value;
     this.parentNode.removeChild(this);
+  }
+}
+
+function saveToLocalStorage(){
+  window.localStorage.clear();
+  if (tableBody.hasChildNodes) {
+    var rowArray = tableBody.getElementsByTagName('SPAN');
+    for (i = 0; i < rowArray.length; i++) {
+      window.localStorage.setItem(i, rowArray[i].innerHTML);
+    }
   }
 }

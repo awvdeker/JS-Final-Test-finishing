@@ -10,3 +10,9 @@ Groceries list
 - step 16 : finished!!
 
 - step 17 and further : no time left!
+
+## GOING FURTHER:
+
+- step 16-17: finished!
+
+- step 12-13: 
