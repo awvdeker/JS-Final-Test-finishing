@@ -5,6 +5,8 @@ var buttonGrocery = document.getElementById('buttonGrocery');
 var amount = document.getElementById('amount');
 var buttonSave = document.getElementById('buttonSave');
 
+afterReload()
+
 buttonGrocery.addEventListener("click",clickHandler);
 buttonSave.addEventListener("click",saveToLocalStorage);
 
@@ -74,8 +76,16 @@ function saveToLocalStorage(){
   window.localStorage.clear();
   if (tableBody.hasChildNodes) {
     var rowArray = tableBody.getElementsByTagName('SPAN');
-    for (i = 0; i < rowArray.length; i++) {
+    for (let i = 0; i < rowArray.length; i++) {
       window.localStorage.setItem(i, rowArray[i].innerHTML);
     }
+  }
+}
+
+function afterReload(){
+  let index = 0;
+  while (window.localStorage.key(index)){
+    addRow(window.localStorage.getItem(index));
+    index++;
   }
 }
