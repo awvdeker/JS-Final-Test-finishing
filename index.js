@@ -47,13 +47,18 @@ function addRow (grocery){
   editButton.addEventListener("click",makeInput);
 
   amount.innerHTML=tableBody.getElementsByTagName('tr').length;
-  gradient = ((tableBody.getElementsByTagName('tr').length)-1)*2;
+  var gradient = ((tableBody.getElementsByTagName('tr').length)-1)*2;
   newRow.style.backgroundColor="rgb("+(255-gradient)+","+(255-gradient)+","+(255-gradient)+")";
 }
 
 function deleteRow(){
   this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
   amount.innerHTML=tableBody.getElementsByTagName('tr').length;
+
+  var rowColor = tableBody.getElementsByTagName('tr');
+  for (let i=0; i < rowColor.length ;i++){
+    rowColor[i].style.backgroundColor="rgb("+(255-(i*2))+","+(255-(i*2))+","+(255-(i*2))+")";
+  }
 }
 
 function makeInput (){
