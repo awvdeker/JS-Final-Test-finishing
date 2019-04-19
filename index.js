@@ -22,7 +22,6 @@ function clickHandler (){
     } else {
       addRow(inputBox.value);
       inputBox.value = "";
-      amount.innerHTML=tableBody.getElementsByTagName('tr').length;
     }
   },500);
 }
@@ -46,7 +45,7 @@ function addRow (grocery){
   editButton.innerHTML="Edit";
   newCell.appendChild(editButton);
   editButton.addEventListener("click",makeInput);
-
+  amount.innerHTML=tableBody.getElementsByTagName('tr').length;
 }
 
 function deleteRow(){
