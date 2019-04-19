@@ -55,5 +55,13 @@ function makeInput (){
     this.parentNode.firstChild.innerHTML="";
     console.log(this.parentNode.firstChild);
     this.parentNode.prepend(newInput);
+    newInput.addEventListener('keyup',changeToContent);
+  }
+}
+
+function changeToContent(){
+  if (event.keyCode === 13) {
+    this.nextSibling.innerHTML=this.value;
+    this.parentNode.removeChild(this);
   }
 }
