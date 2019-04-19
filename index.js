@@ -25,6 +25,17 @@ function emptyingInput(){
 function emptying(){
   if (inputBox.value != ""){
     crossEmpty.style.display="";
+    if ((event.keyCode===13) && (inputBox.value=="clear")){
+      //clear table
+      var deleteRowArray = tableBody.getElementsByTagName('tr');
+      if (deleteRowArray[0]){
+        for (let i=(deleteRowArray.length-1); i>=0 ;i--){
+          tableBody.removeChild(deleteRowArray[i]);
+        }
+        amount.innerHTML="0";
+      }
+
+    }
   } else{
     crossEmpty.style.display="none";
   }
