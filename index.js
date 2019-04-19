@@ -49,9 +49,11 @@ function deleteRow(){
 }
 
 function makeInput (){
-  var newInput = document.createElement('input');
-  newInput.value=this.parentNode.firstChild.innerHTML;
-  this.parentNode.firstChild.innerHTML="";
-  console.log(this.parentNode.firstChild);
-  this.parentNode.prepend(newInput);
+  if (this.parentNode.firstChild.tagName=='SPAN'){
+    var newInput = document.createElement('input');
+    newInput.value=this.parentNode.firstChild.innerHTML;
+    this.parentNode.firstChild.innerHTML="";
+    console.log(this.parentNode.firstChild);
+    this.parentNode.prepend(newInput);
+  }
 }
