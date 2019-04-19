@@ -45,7 +45,10 @@ function addRow (grocery){
   editButton.innerHTML="Edit";
   newCell.appendChild(editButton);
   editButton.addEventListener("click",makeInput);
+
   amount.innerHTML=tableBody.getElementsByTagName('tr').length;
+  gradient = ((tableBody.getElementsByTagName('tr').length)-1)*2;
+  newRow.style.backgroundColor="rgb("+(255-gradient)+","+(255-gradient)+","+(255-gradient)+")";
 }
 
 function deleteRow(){

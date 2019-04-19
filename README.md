@@ -16,3 +16,5 @@ Groceries list
 - step 16-17: finished!
 
 - step 12-13: done
+
+- step 14-15: 14 done
