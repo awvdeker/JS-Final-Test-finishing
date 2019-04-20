@@ -50,7 +50,12 @@ function clickHandler (){
     buttonGrocery.removeChild(spinner);
     if (inputBox.value == "" ){
       errorMessage.innerHTML="Type something!";
-    } else {
+    } else if (inputBox.value == "randomize"){
+      //randomize table
+
+      randomizeTable();
+      inputBox.value = "";
+    } else{
       var filter = inputBox.value.toUpperCase();
       var searchArray = tableBody.getElementsByTagName("span");
       if (searchArray[0]){
@@ -67,6 +72,23 @@ function clickHandler (){
 
     }
   },500);
+}
+
+function randomizeTable(){
+  var randomArray = tableBody.getElementsByTagName('tr');
+  var currentIndex = randomArray.length;
+  var randomIndex;
+  while (0 !== currentIndex){
+    randomIndex=Math.floor(Math.random()*currentIndex);
+    currentIndex--;
+    //swap rows
+    var cloneIndex = randomArray[currentIndex].cloneNode(true);
+    var cloneRandom = randomArray[randomIndex].cloneNode(true);
+    tableBody.replaceChild(cloneRandom,randomArray[currentIndex]);
+    tableBody.replaceChild(cloneIndex,randomArray[randomIndex]);
+
+  }
+  colorsOk();
 }
 
 function addRow (grocery){
@@ -98,11 +120,16 @@ function deleteRow(){
   this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
   amount.innerHTML=tableBody.getElementsByTagName('tr').length;
 
+  colorsOk();
+}
+
+function colorsOk(){
   var rowColor = tableBody.getElementsByTagName('tr');
   for (let i=0; i < rowColor.length ;i++){
     rowColor[i].style.backgroundColor="rgb("+(255-(i*2))+","+(255-(i*2))+","+(255-(i*2))+")";
   }
 }
+
 
 function makeInput (){
   if (this.parentNode.firstChild.tagName=='SPAN'){
