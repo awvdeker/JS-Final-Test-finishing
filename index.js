@@ -170,20 +170,26 @@ function randomizeTable(){
   var randomArray = tableBody.getElementsByTagName('tr');
   var currentIndex = randomArray.length;
   var randomIndex;
-  while (0 !== currentIndex){
+  while (currentIndex>1){
     randomIndex=Math.floor(Math.random()*currentIndex);
     currentIndex--;
     //swap rows
-    var cloneIndex = randomArray[currentIndex].cloneNode(true);
+
     //var cloneRandom = randomArray[randomIndex].cloneNode(true);
 
     //tableBody.replaceChild(cloneRandom,randomArray[currentIndex]);
     //eventlisteners vallen weg!!, andere methode via addRow !!! :
-    var lastGrocery = randomArray[randomIndex].getElementsByTagName('span')[0].innerHTML;
-    tableBody.removeChild(randomArray[currentIndex]);
-    addRow(lastGrocery);
-    tableBody.replaceChild(cloneIndex,randomArray[randomIndex]);
-
+    if (currentIndex == randomIndex){
+      var lastGrocery = randomArray[randomIndex].getElementsByTagName('span')[0].innerHTML;
+      tableBody.removeChild(randomArray[currentIndex]);
+      addRow(lastGrocery);
+    }else{
+      var cloneIndex = randomArray[currentIndex].cloneNode(true);
+      var lastGrocery = randomArray[randomIndex].getElementsByTagName('span')[0].innerHTML;
+      tableBody.removeChild(randomArray[currentIndex]);
+      addRow(lastGrocery);
+      tableBody.replaceChild(cloneIndex,randomArray[randomIndex]);
+    }
   }
   colorsOk();
 }
