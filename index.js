@@ -4,6 +4,7 @@ var tableBody = document.getElementById('tableBody');
 var buttonGrocery = document.getElementById('buttonGrocery');
 var amount = document.getElementById('amount');
 var buttonSave = document.getElementById('buttonSave');
+var deleteGroceryButton = document.getElementById('deleteGroceryButton');
 
 var crossEmpty = document.createElement('button');
 inputBox.parentNode.insertBefore(crossEmpty,inputBox.nextSibling);
@@ -16,6 +17,7 @@ buttonGrocery.addEventListener("click",clickHandler);
 buttonSave.addEventListener("click",saveToLocalStorage);
 inputBox.addEventListener("keyup",emptying);
 crossEmpty.addEventListener("click",emptyingInput);
+deleteGroceryButton.addEventListener("click",deleteGrocery);
 
 var switchDelete = false;
 document.addEventListener("keydown",function(event){
@@ -88,6 +90,27 @@ function clickHandler (){
     }
   },500);
 }
+
+function deleteGrocery(){
+  //search the table for a grocery with the name of the input field's value
+  //and if it finds it, delete it, otherwise show an error
+  errorMessage.innerHTML="";
+  var filterDelete = inputBox.value.toUpperCase();
+  var searchArrayDelete = tableBody.getElementsByTagName("span");
+  if (searchArrayDelete[0]){
+    for (let i=0; i<searchArrayDelete.length;i++){
+      var txtValue = searchArrayDelete[i].innerHTML.toUpperCase();
+      if (txtValue == filterDelete){
+        deleteRow(searchArrayDelete[i].parentNode.parentNode);
+        inputBox.value = "";
+        crossEmpty.style.display="none";
+        return;
+      }
+    }
+  }
+  errorMessage.innerHTML="Grocery NOT in your list!";
+}
+
 
 function randomizeTable(){
   var randomArray = tableBody.getElementsByTagName('tr');
