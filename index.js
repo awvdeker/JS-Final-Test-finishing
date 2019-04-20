@@ -122,10 +122,22 @@ function addRow (grocery){
 }
 
 function deleteRow(){
-  this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-  amount.innerHTML=tableBody.getElementsByTagName('tr').length;
+  //animation
+  var rowToRemove = this.parentNode.parentNode;
+  rowToRemove.style.position="relative";
+  rowToRemove.style.left=0;
+  rowToRemove.style.transition="all 2s linear";
+  setTimeout(function(){
+    rowToRemove.style.left="100vw";
+    setTimeout(function(){
+      rowToRemove.parentNode.removeChild(rowToRemove);
+      amount.innerHTML=tableBody.getElementsByTagName('tr').length;
 
-  colorsOk();
+      colorsOk();
+
+    },2000);
+  },100);
+
 }
 
 function colorsOk(){
