@@ -42,11 +42,32 @@ function togglerHandler(){
   if (plusMinus == true){
     toggler.innerHTML="-";
     plusMinus = false;
+
+    //animation
+    tableBody.style.position="relative";
+    tableBody.style.top="100vh";
     tableBody.style.display="";
+    tableBody.style.transition ="all 2s linear";
+    setTimeout(function(){
+      tableBody.style.top=0;
+    },100);
+
+
   } else{
     toggler.innerHTML="+";
     plusMinus = true;
-    tableBody.style.display="none";
+
+    //animation
+    tableBody.style.position="relative";
+    tableBody.style.top=0;
+    tableBody.style.transition = "all 2s linear";
+    setTimeout(function(){
+      tableBody.style.top="100vh";
+      setTimeout(function(){
+        tableBody.style.display="none";
+      },2000);
+    },100);
+
   }
 }
 

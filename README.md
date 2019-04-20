@@ -42,3 +42,7 @@ Groceries list
 - step 28: done
 
 - step 29: done
+
+- step 30: done
+
+- finished all steps!!
