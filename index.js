@@ -23,6 +23,7 @@ deleteGroceryButton.addEventListener("click",deleteGrocery);
 goDoGroceries.addEventListener("click",goShopping);
 
 var plusMinus = true;
+tableBody.style.display="none";
 toggler.addEventListener("click",togglerHandler);
 
 var switchDelete = false;
@@ -41,9 +42,11 @@ function togglerHandler(){
   if (plusMinus == true){
     toggler.innerHTML="-";
     plusMinus = false;
+    tableBody.style.display="";
   } else{
     toggler.innerHTML="+";
     plusMinus = true;
+    tableBody.style.display="none";
   }
 }
 
