@@ -17,6 +17,18 @@ buttonSave.addEventListener("click",saveToLocalStorage);
 inputBox.addEventListener("keyup",emptying);
 crossEmpty.addEventListener("click",emptyingInput);
 
+var switchDelete = false;
+document.addEventListener("keydown",function(event){
+  if (event.keyCode === 46){
+    switchDelete = true;
+  }
+});
+document.addEventListener("keyup",function(event){
+  if (event.keyCode === 46){
+    switchDelete = false;
+  }
+});
+
 function emptyingInput(){
   inputBox.value="";
   crossEmpty.style.display="none";
@@ -108,7 +120,11 @@ function addRow (grocery){
   newCell.appendChild(crossIcon);
   newRow.appendChild(newCell);
   tableBody.appendChild(newRow);
-  crossIcon.addEventListener("click",deleteRow);
+  crossIcon.addEventListener("click",function(){
+
+    deleteRow(this.parentNode.parentNode);
+
+  });
 
   var editButton = document.createElement("button");
   editButton.classList.add("editButton","float-right");
@@ -119,18 +135,26 @@ function addRow (grocery){
   amount.innerHTML=tableBody.getElementsByTagName('tr').length;
   var gradient = ((tableBody.getElementsByTagName('tr').length)-1)*2;
   newRow.style.backgroundColor="rgb("+(255-gradient)+","+(255-gradient)+","+(255-gradient)+")";
+
+  newRow.addEventListener("mouseover",function(){
+    if (switchDelete){
+
+      deleteRow(this);
+    }
+  });
+
 }
 
-function deleteRow(){
+function deleteRow(rowToRemove){
   //animation
-  var rowToRemove = this.parentNode.parentNode;
+  //var rowToRemove = this.parentNode.parentNode;
   rowToRemove.style.position="relative";
   rowToRemove.style.left=0;
   rowToRemove.style.transition="all 2s linear";
   setTimeout(function(){
     rowToRemove.style.left="100vw";
     setTimeout(function(){
-      rowToRemove.parentNode.removeChild(rowToRemove);
+      tableBody.removeChild(rowToRemove);
       amount.innerHTML=tableBody.getElementsByTagName('tr').length;
 
       colorsOk();
