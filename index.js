@@ -34,7 +34,7 @@ function emptying(){
         }
         amount.innerHTML="0";
       }
-
+      inputBox.value = "";
     }
   } else{
     crossEmpty.style.display="none";
