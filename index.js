@@ -6,6 +6,7 @@ var amount = document.getElementById('amount');
 var buttonSave = document.getElementById('buttonSave');
 var deleteGroceryButton = document.getElementById('deleteGroceryButton');
 var goDoGroceries = document.getElementById('goDoGroceries');
+var toggler = document.getElementById('toggler');
 
 var crossEmpty = document.createElement('button');
 inputBox.parentNode.insertBefore(crossEmpty,inputBox.nextSibling);
@@ -21,6 +22,9 @@ crossEmpty.addEventListener("click",emptyingInput);
 deleteGroceryButton.addEventListener("click",deleteGrocery);
 goDoGroceries.addEventListener("click",goShopping);
 
+var plusMinus = true;
+toggler.addEventListener("click",togglerHandler);
+
 var switchDelete = false;
 document.addEventListener("keydown",function(event){
   if (event.keyCode === 46){
@@ -32,6 +36,16 @@ document.addEventListener("keyup",function(event){
     switchDelete = false;
   }
 });
+
+function togglerHandler(){
+  if (plusMinus == true){
+    toggler.innerHTML="-";
+    plusMinus = false;
+  } else{
+    toggler.innerHTML="+";
+    plusMinus = true;
+  }
+}
 
 function emptyingInput(){
   inputBox.value="";
