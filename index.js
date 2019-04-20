@@ -83,8 +83,13 @@ function randomizeTable(){
     currentIndex--;
     //swap rows
     var cloneIndex = randomArray[currentIndex].cloneNode(true);
-    var cloneRandom = randomArray[randomIndex].cloneNode(true);
-    tableBody.replaceChild(cloneRandom,randomArray[currentIndex]);
+    //var cloneRandom = randomArray[randomIndex].cloneNode(true);
+
+    //tableBody.replaceChild(cloneRandom,randomArray[currentIndex]);
+    //eventlisteners vallen weg!!, andere methode via addRow !!! :
+    var lastGrocery = randomArray[randomIndex].getElementsByTagName('span')[0].innerHTML;
+    tableBody.removeChild(randomArray[currentIndex]);
+    addRow(lastGrocery);
     tableBody.replaceChild(cloneIndex,randomArray[randomIndex]);
 
   }
