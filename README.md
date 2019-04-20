@@ -32,3 +32,7 @@ Groceries list
 - step 23: done
 
 - step 24: done
+
+- step 25: done
+
+- step 26: done

@@ -5,6 +5,7 @@ var buttonGrocery = document.getElementById('buttonGrocery');
 var amount = document.getElementById('amount');
 var buttonSave = document.getElementById('buttonSave');
 var deleteGroceryButton = document.getElementById('deleteGroceryButton');
+var goDoGroceries = document.getElementById('goDoGroceries');
 
 var crossEmpty = document.createElement('button');
 inputBox.parentNode.insertBefore(crossEmpty,inputBox.nextSibling);
@@ -18,6 +19,7 @@ buttonSave.addEventListener("click",saveToLocalStorage);
 inputBox.addEventListener("keyup",emptying);
 crossEmpty.addEventListener("click",emptyingInput);
 deleteGroceryButton.addEventListener("click",deleteGrocery);
+goDoGroceries.addEventListener("click",goShopping);
 
 var switchDelete = false;
 document.addEventListener("keydown",function(event){
@@ -54,6 +56,20 @@ function emptying(){
   } else{
     crossEmpty.style.display="none";
   }
+}
+
+function goShopping(){
+  //browsernotification popup should tell you to have fun at the store,
+  //also delete entire content of the table
+  alert("Have fun at the store!");
+  var deleteRowArrayShopping = tableBody.getElementsByTagName('tr');
+  if (deleteRowArrayShopping[0]){
+    for (let i=(deleteRowArrayShopping.length-1); i>=0 ; i--){
+      tableBody.removeChild(deleteRowArrayShopping[i]);
+    }
+    amount.innerHTML="0";
+  }
+
 }
 
 function clickHandler (){
