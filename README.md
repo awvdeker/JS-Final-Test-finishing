@@ -46,3 +46,7 @@ Groceries list
 - step 30: done
 
 - finished all steps!!
+
+exercise published at:
+
+https://awvdeker.github.io/JS-Final-Test-finishing/
