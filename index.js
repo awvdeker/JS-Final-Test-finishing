@@ -47,6 +47,7 @@ function emptying(){
         amount.innerHTML="0";
       }
       inputBox.value = "";
+      crossEmpty.style.display="none";
     }
   } else{
     crossEmpty.style.display="none";
@@ -67,6 +68,7 @@ function clickHandler (){
 
       randomizeTable();
       inputBox.value = "";
+      crossEmpty.style.display="none";
     } else{
       var filter = inputBox.value.toUpperCase();
       var searchArray = tableBody.getElementsByTagName("span");
@@ -81,6 +83,7 @@ function clickHandler (){
       }
       addRow(inputBox.value);
       inputBox.value = "";
+      crossEmpty.style.display="none";
 
     }
   },500);
